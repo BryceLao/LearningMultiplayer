@@ -58,11 +58,9 @@ public class PlayerController : MonoBehaviour {
         }
 
         motor.ApplyThruster(_thrusterForce);
-
     }
 
     private void SetJointSettings(float _jointSpring) {
         joint.yDrive = new JointDrive {mode = jointMode, positionSpring = jointSpring, maximumForce = jointMaxForce};
     }
-
 }

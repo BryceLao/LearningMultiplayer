@@ -4,6 +4,22 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour {
 
+    public static GameManager instance;
+
+    public MatchSettings matchSettings;
+
+    private void Awake() {
+        if (instance != null) {
+            Debug.LogError("More Than One GameManager In Scene");
+        }
+
+        else {
+            instance = this;
+        }
+    }
+
+    #region Player Tracking
+
     private const string PLAYER_ID_PREFIX = "Player ";
 
     private static Dictionary<string, Player> players = new Dictionary<string, Player>();
@@ -33,4 +49,5 @@ public class GameManager : MonoBehaviour {
     public static Player GetPlayer(string _playerID) {
         return players[_playerID];
     }
+    #endregion
 }
